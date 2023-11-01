@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.blog.payload.UserDto;
 import com.blog.services.UserService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
@@ -26,14 +28,14 @@ public class UserController {
 	
 	//post - create user 
 	@PostMapping("/")
-	public ResponseEntity<UserDto> createUser(@RequestBody UserDto userDto){
+	public ResponseEntity<UserDto> createUser(@Valid @RequestBody UserDto userDto){
 	UserDto createUserDto =	this.userservice.createUser(userDto);
 	return new ResponseEntity<>(createUserDto,HttpStatus.CREATED);
 	}
 	
 	// put - update user
 	@PutMapping("/{userId}")
-	public ResponseEntity<UserDto> updateUser (@RequestBody UserDto userDto , @PathVariable Integer userId){
+	public ResponseEntity<UserDto> updateUser (@Valid @RequestBody UserDto userDto , @PathVariable Integer userId){
 		
 	UserDto updatedUser = this.userservice.updateUser(userDto, userId);
 		return  ResponseEntity.ok(updatedUser);

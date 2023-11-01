@@ -11,23 +11,20 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name="users")
+@Table(name = "users")
 @NoArgsConstructor // from lombok dependency and used for when we need object of User
 //@Getter
 //@Setter
 public class User {
-	
-	
-	@Id // primary key
-	@GeneratedValue(strategy = GenerationType.AUTO) // update automatic value in column id 
-	private int id;
-	
-	
-	
-	@Column(name ="user_name",nullable=false ,length =100) 
-private String name ;
 
-public int getId() {
+	@Id // primary key
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id;
+
+	@Column(name = "user_name", nullable = false, length = 100)
+	private String name;
+
+	public int getId() {
 		return id;
 	}
 
@@ -67,10 +64,10 @@ public int getId() {
 		this.about = about;
 	}
 
-private String email;
+	private String email;
 
-private String password;
+	private String password;
 
-private String about;
+	private String about;
 
 }
