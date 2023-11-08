@@ -35,61 +35,41 @@ public class CategoryController {
 	// update
 
 	@PutMapping("/{catId}")
-	public ResponseEntity<CategoryDto> updateCategory(@RequestBody CategoryDto categoryDto,	@PathVariable Integer catId) {
-		
+	public ResponseEntity<CategoryDto> updateCategory(@RequestBody CategoryDto categoryDto,
+			@PathVariable Integer catId) {
+
 		CategoryDto updatedCategory = this.categoryService.updateCategory(categoryDto, catId);
 		return new ResponseEntity<CategoryDto>(updatedCategory, HttpStatus.OK);
 	}
-		// delete
+	// delete
 
-	
 	@DeleteMapping("/{catId}")
-	public ResponseEntity<ApiResponse> deleteCategory(	@PathVariable Integer catId) {
-		
+	public ResponseEntity<ApiResponse> deleteCategory(@PathVariable Integer catId) {
+
 		this.categoryService.deleteCategory(catId);
-		return new ResponseEntity<ApiResponse>(new ApiResponse("category is deleted Successfully", true), HttpStatus.OK);
+		return new ResponseEntity<ApiResponse>(new ApiResponse("category is deleted Successfully", true),
+				HttpStatus.OK);
 	}
-	
-	
-	
+
 	// get
 
 	@GetMapping("/{catId}")
-	public ResponseEntity<CategoryDto> getCategory(	@PathVariable Integer catId) {
-		
-		CategoryDto categoryDto =this.categoryService.getCategory(catId);
-		
-		return new ResponseEntity<CategoryDto>(categoryDto ,HttpStatus.OK);
-		
+	public ResponseEntity<CategoryDto> getCategory(@PathVariable Integer catId) {
+
+		CategoryDto categoryDto = this.categoryService.getCategory(catId);
+
+		return new ResponseEntity<CategoryDto>(categoryDto, HttpStatus.OK);
+
 	}
-	
 
 	// get all
-	
 
 	@GetMapping("/")
-	public ResponseEntity<List<CategoryDto>> getCategories(	) {
-		
-	List<CategoryDto>categories=	this.categoryService.getCategories();
-	return ResponseEntity.ok(categories);
-		
-		
-		
-		
-		
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	public ResponseEntity<List<CategoryDto>> getCategories() {
 
-	
+		List<CategoryDto> categories = this.categoryService.getCategories();
+		return ResponseEntity.ok(categories);
+
+	}
+
 }
